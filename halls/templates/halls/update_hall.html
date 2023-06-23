@@ -1,0 +1,21 @@
+{% extends 'halls/base.html' %}
+{% block content %}
+<div class="container">
+<h2>Edit Hall of Fame</h2>
+<form method="post">
+  {% csrf_token %}
+  {% comment %} {% load widget_tweaks %}
+  {% for field in form %}
+  <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
+    {{ field.errors }}
+    {{ field.label_tag }}
+    {% render_field field class="form-control" %}
+  </div>
+  {% endfor %} {% endcomment %}
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<br>
+<a href="{% url 'delete_hall' hall.id %}" class="btn btn-danger">Delete this Hall of Fame</a>
+
+</div>
+{% endblock %}

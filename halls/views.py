@@ -44,3 +44,16 @@ class CreateHall(generic.CreateView):
 class DetailHall(generic.DetailView):
     model = Hall
     template_name = 'halls/detail_hall.html'
+    
+
+class UpdateHall(generic.UpdateView):
+    model = Hall
+    template_name = 'halls/update_hall.html'
+    fields = ['title']
+    success_url = reverse_lazy('dashboard')
+    
+
+class DeleteHall(generic.DeleteView):
+    model = Hall
+    template_name = 'halls/delete_hall.html'
+    success_url = reverse_lazy('dashboard')
