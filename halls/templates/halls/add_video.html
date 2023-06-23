@@ -1,0 +1,20 @@
+{% extends 'halls/base.html' %}
+{% block content %}
+<div class="container">
+<h2>Add Video to the  Hall of Fame</h2>
+<form method="post">
+  {% csrf_token %}
+
+{{form.as_p}}
+  {% comment %} {% load widget_tweaks %}
+  {% comment %} {% for field in form %} {% endcomment %}
+  {% comment %} <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
+    {{ field.errors }}
+    {{ field.label_tag }}
+    {% render_field field class="form-control" %}
+  </div> {% endcomment %}
+  {% comment %} {% endfor %} {% endcomment %} 
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+</div>
+{% endblock %}
