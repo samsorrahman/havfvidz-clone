@@ -1,10 +1,54 @@
 {% extends 'halls/base.html' %}
-
 {% block content %}
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">What's your personal Hall of Fame?</h1>
+    <p class="lead text-muted">You what they are. They're your goto videos. You have a top 10 list and it's time to share them with the world. Click the button below to get started.</p>
+    <p>
+      <a href="{% url 'create_hall' %}" class="btn btn-primary">Create Your Hall of Fame</a>
+    </p>
+  </div>
+</section>
+<div class="container">
+  <h1 class="text-center">Popular Hall of Fames</h1>
+  {% for hall in popular_halls %}
 
-hellow orld
+<h2><a href="{% url 'detail_hall' hall.id %}">{{ hall.title }}</a></h2>
 
-{% endblock content %}
+  <div class="row">
+    {% for video in hall.video_set.all %}
+    <div class="col-md-4 mt-3">
+      <div class="card mb-4 shadow-sm">
+        <iframe width="100%" height="225" src="https://www.youtube.com/embed/{{ video.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="card-body">
+          <p class="card-text">{{ video.title }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+  {% endfor %}
 
 
+  <h1 class="text-center">Recent Hall of Fames</h1>
+  {% for hall in recent_halls %}
 
+<h2><a href="{% url 'detail_hall' hall.id %}">{{ hall.title }}</a></h2>
+
+  <div class="row">
+    {% for video in hall.video_set.all %}
+    <div class="col-md-4 mt-3">
+      <div class="card mb-4 shadow-sm">
+        <iframe width="100%" height="225" src="https://www.youtube.com/embed/{{ video.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="card-body">
+          <p class="card-text">{{ video.title }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+  {% endfor %}
+
+
+</div>
+{% endblock %}

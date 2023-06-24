@@ -4,7 +4,7 @@
   <h2>Login</h2>
   <form method="post">
     {% csrf_token %}
-    {% comment %} {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+    {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
     {% load widget_tweaks %}
     {% for field in form %}
     <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
@@ -13,8 +13,7 @@
       {% render_field field class="form-control" %}
       {% if field.help_text %}<small class="text-muted">{{ field.help_text|safe }}</small>{% endif %}
     </div>
-    {% endfor %} {% endcomment %}
-    {{form.as_p}}
+    {% endfor %}
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </div>

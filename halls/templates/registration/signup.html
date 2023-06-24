@@ -4,17 +4,16 @@
   <h2>Sign Up</h2>
   <form method="post">
     {% csrf_token %}
-    {% comment %} {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+    {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
     {% load widget_tweaks %}
     {% for field in form %}
     <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
       {{ field.errors }}
       {{ field.label_tag }}
       {% render_field field class="form-control" %}
-      {% if field.help_text %}<small class="text-muted">{{ field.help_text|safe }}</small>{% endif %} {% endcomment %}
-    {% comment %} </div>
-    {% endfor %} {% endcomment %}
-    {{form.as_p}}
+      {% if field.help_text %}<small class="text-muted">{{ field.help_text|safe }}</small>{% endif %} 
+    </div>
+    {% endfor %}
     <button type="submit" class="btn btn-primary">Sign Up</button>
   </form>
 </div>
