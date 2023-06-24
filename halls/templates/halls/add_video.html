@@ -1,24 +1,42 @@
 {% extends 'halls/base.html' %}
 {% block content %}
 <div class="container">
-<h2>Add Video to the  Hall of Fame</h2>
-<form method="post">
-  {% csrf_token %}
+  <h2>Add Video to {{ hall.title }}</h2>
+  <form method="post" id="submit_video">
+    {% csrf_token %}
+    {% load widget_tweaks %}
 
-{% comment %} {{form.as_p}} {% endcomment %}
-  {% load widget_tweaks %}
-  {% for field in form %} 
-  <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
-    {{ field.errors }}
-    {{ field.label_tag }}
-    {% render_field field class="form-control" %}
-  </div> 
- {% endfor %}
-  <button type="submit" class="btn btn-primary">Create</button>
-</form>
-<h2>OR</h2>
-<form>
-  {{search_form}}
-</form>
+    {% for field in form %}
+    <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
+      {{ field.errors }}
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  <br>
+  <h2>OR</h2>
+  <form>
+    {% for field in search_form %}
+    <div class="form-group">
+      {{ field.errors }}
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+    </div>
+    {% endfor %}
+  </form>
+
+  <div id="search_results"></div>
+  <script>
+    var delayTimer;
+    $('#id_search_term').keyup(function(){
+        clearTimeout(delayTimer);
+        $('#search_results').text('Loading...');
+    });
+
+  </script>
+
 </div>
 {% endblock %}
