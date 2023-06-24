@@ -7,6 +7,9 @@ from .forms import VideoForm, SearchForm
 from django.contrib.auth import authenticate, login
 # Create your views here.
 
+
+YOUTUBE_API_KEY = 'AIzaSyAkzDHgx5-ntQ50jRpXcFQheN6YwZ2zK-8'
+
 def home(request):
     return render(request, 'halls/home.html')
 
