@@ -62,7 +62,10 @@ def video_search(request):
 
 
 
-
+class DeleteVideo(generic.DeleteView):
+    model = Video
+    template_name = 'halls/delete_video.html'
+    success_url = reverse_lazy('dashboard')
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
