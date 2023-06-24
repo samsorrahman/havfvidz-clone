@@ -19,7 +19,8 @@ def home(request):
 
 
 def dashboard(request):
-    return render(request, 'halls/dashboard.html')
+    halls = Hall.objects.filter(user=request.user)
+    return render(request, 'halls/dashboard.html', {'halls':halls})
 
 
 
