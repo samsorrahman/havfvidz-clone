@@ -5,15 +5,15 @@
 <form method="post">
   {% csrf_token %}
 
-{{form.as_p}}
-  {% comment %} {% load widget_tweaks %}
-  {% comment %} {% for field in form %} {% endcomment %}
-  {% comment %} <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
+{% comment %} {{form.as_p}} {% endcomment %}
+  {% load widget_tweaks %}
+  {% for field in form %} 
+  <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
     {{ field.errors }}
     {{ field.label_tag }}
     {% render_field field class="form-control" %}
-  </div> {% endcomment %}
-  {% comment %} {% endfor %} {% endcomment %} 
+  </div> 
+ {% endfor %}
   <button type="submit" class="btn btn-primary">Create</button>
 </form>
 <h2>OR</h2>
