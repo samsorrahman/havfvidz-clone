@@ -15,6 +15,13 @@ Responsive design: The application is built using Bootstrap, ensuring that it is
 <br>
 <br>
 <br>
+
+# Technologies Used
+Django: Python web framework used for backend development.<br>
+AJAX: Enables asynchronous communication with the server for real-time updates.<br>
+JavaScript: Adds interactivity and enhances user experience.<br>
+Bootstrap: CSS framework used for responsive and modern UI design.<br>
+YouTube API: Integrated to fetch video details and enhance functionality.<br>
 Getting Started
 <br>
 To run havfvidz-clone locally on your machine, follow these steps:
@@ -41,3 +48,12 @@ myenv\Scripts\activate
 source myenv/bin/activate
 <br>
 
+pip install -r requirements.txt
+<br>
+python manage.py migrate
+<br>
+python manage.py runserver
+
+<br>
+
+# Contributions are welcome!
